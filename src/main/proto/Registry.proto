@@ -28,24 +28,15 @@ service PeerService {
     }
 
     //sending a block
-    rpc KeyHandle (KeyRequest) returns (KeyReply) {
+    rpc KeyHandle (InfoRequest) returns (PeerInfo) {
     }
 
     //Storing pubkeys on Storage service
-    rpc KeyStore (MessageRequest) returns (MessageResponse) {
+    rpc KeyStore (PeerInfo) returns (InfoResponse) {
     }
 
 }
 
-// The request message containing the user's name.
-message MessageRequest {
-    string request = 1;
-}
-
-// The response message containing the greetings
-message MessageResponse {
-    string response = 1;
-}
 
 //service RegistryService {
 //    // Sending a event
@@ -74,18 +65,27 @@ message PingReply {
 
 }
 
-// The request message to obtain public key
-message KeyRequest {
+// The request message to obtain peerinfo
+message InfoRequest {
 
     string account = 1;
 
 }
 
-//response message for key request
-message KeyReply {
+// The response message containing the status
+message InfoResponse {
+    string response = 1;
+}
 
-    string pubKey = 1;
-    string signature = 2;
+// peer info message
+message PeerInfo {
+
+    string id = 1;
+    string pubKey = 2;
+    string address = 3;
+    bool miner = 4;
+    string signature = 5;
+
 
 }
 
