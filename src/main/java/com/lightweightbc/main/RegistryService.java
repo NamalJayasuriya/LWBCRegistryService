@@ -16,10 +16,6 @@ public class RegistryService extends PeerServiceGrpc.PeerServiceImplBase {
     private static final Logger logger = Logger.getLogger(GrpcServer.class.getName());
     public static Crypto crypto = ECDSA.getInstance();
     private static RegistryService registryService = new RegistryService();
-    //private static Map<String, String> pubKeys = new HashMap();
-    //private static Map<String, String> addresses = new HashMap();
-
-    //MongoCollection<Document> collection = MongoDb.getInstance().collection;
     MongoDb mongoDb = MongoDb.getInstance();
 
     public static RegistryService getInstance() {
@@ -30,13 +26,6 @@ public class RegistryService extends PeerServiceGrpc.PeerServiceImplBase {
     public static void main(String[] args) {
 
         logger.info("Sreting LWBC Registry server with GRPC @ port 50050");
-
-//        addPubKeys("MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEfKh2hLwVeTEih1Jo9CGt2+f/qUoR32lpboklBOjg4hd8TjP/Ns7EpK7HRMRx9ShTwheepEUblXZikswyUyw4wA==");
-//        addPubKeys("MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEmQiAt2OYDwubEr8e0rBFUnOmr0RpA7PfY932U7EBHCVwxmxIEdrzsIFovd8jvqxCPFYA0JXGNhfx7Iwn5gn0uQ==");
-//        addPubKeys("MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEgksolyLAL8Cfd8Kj1zUPt12FaY9kjXj/ce5NWs8j8dYEqOnLeoLQ/DJtWK33LRqkhELr07oWkWekZvWCO4sDwg==");
-//        addPubKeys("MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEPqRWzxP143FNBG5nmZ9jUKCA/IMJOO2QN39whXzvWY3kx7uKxcxlHU6Nn5AV1YAad+Cogsg41Lqk3KyVM9rE6w==");
-//        addPubKeys("MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEjqW6VQazgakmcOiQyexbK5xIL+F3aExgkeHXgAdJLPfmcxfNrZGn/lFmSCAoaYftfp+PPhuYrkhUkhT7x9CfYg==");
-//        addPubKeys("MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEWNvsU4sZ7Jkc4Krm9EHG+ZSZg3XoFnIHO9ZbZOmARViO/MDGBHq7wKIfVOQ23I5QUrxXJuDN9jlwtsi1xNPT2w==");
 
         //instantiate a grpc server
         final GrpcServer server = new GrpcServer(50050);
@@ -50,14 +39,10 @@ public class RegistryService extends PeerServiceGrpc.PeerServiceImplBase {
             e.printStackTrace();
         }
 
-        //ToDo create db is not create
+        //ToDo create if db is not created
 
     }
 
-//    public static void addPubKeys(String pKey) {
-//        PublicKey publicKey = crypto.stringToPubKey(pKey);
-//        pubKeys.put(crypto.hash(publicKey.toString()), pKey);
-//    }
 
     @Override
     public void pingHandle(PingRequest req, StreamObserver<PingReply> responseObserver) {
