@@ -28,7 +28,7 @@ public class MongoDb {
 
     MongoDb(){
         // Creating a Mongo client
-        mongo = new MongoClient("localhost", 27017);
+        mongo = new MongoClient("127.0.0.1", 27017);
 
         //Accessing the database
         database = mongo.getDatabase("lwbcRegistry");

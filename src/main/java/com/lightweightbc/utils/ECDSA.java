@@ -64,7 +64,7 @@ public class ECDSA implements Crypto {
         KeyFactory factory = null;
         try {
             factory = KeyFactory.getInstance("ECDSA", "BC");
-            publicKey = (ECPublicKey) factory.generatePublic(new X509EncodedKeySpec(keyBytes));
+            publicKey = factory.generatePublic(new X509EncodedKeySpec(keyBytes));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchProviderException e) {
